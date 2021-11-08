@@ -27,6 +27,15 @@ public class MyWorld extends World
     private int hoverTextFontSize = 20;
     private Label hoverTextLabel;
 
+    // true if sorting algorithm should be visualized
+    private boolean visualized;
+    
+    // the number of elements in the array
+    private int numberOfElements = 10;
+    
+    // the array to display
+    private int[] elements = new int[numberOfElements];
+    
     /**
      * Constructor for objects of class MyWorld.
      */
@@ -45,6 +54,10 @@ public class MyWorld extends World
         hoverTextLabel = new Label("", hoverTextFontSize);
     }
 
+    /**
+     * 
+     */
+    
     /**
      * Create and update the labels
      * This method moves labels to the "front" so they can be clicked

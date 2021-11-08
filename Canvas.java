@@ -98,6 +98,21 @@ public class Canvas extends Actor
         this.setImage(image);
         Greenfoot.delay(delay);
     }
+    
+    /**
+     * Draw a rectangle with bottom left coordinate (x, y) with width and height
+     */
+    public void rect2(double x, double y, double width, double height)
+    {
+        int nx = (int) (x * scale);
+        int ny = (int) ((1-y) * scale);
+        int w = (int) (width * scale);
+        int h = (int) (550 - (height * scale));
+        image.drawRect(nx, ny, w, h);
+        this.setImage(image);
+        Greenfoot.delay(delay);
+    }
+
 
     /**
      * Set the drawing color
