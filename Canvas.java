@@ -8,8 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Canvas extends Actor
 {
-    // The drawing delay
-    private int delay = 1;
+
+    private int delay = 0; // The drawing delay
+    GreenfootImage blankImage = new GreenfootImage(1,1);
+    GreenfootImage image = new GreenfootImage(1,1);
+    private int scale; // The side-length of the world.
     
     /**
      * Override and implement your drawing in this method.
@@ -27,26 +30,31 @@ public class Canvas extends Actor
     public void draw()
     {
     }
-    
-    private GreenfootImage image = new GreenfootImage(1,1);  // The image that greenfoot draws on
-    private int scale;  // The scale or side-length of the world.
-
+ 
     public void addedToWorld(World world)
     {
         // set the scale to the width of the world
         // ensure width = height in the world
         scale = world.getWidth();
-
+        
+        blankImage = new GreenfootImage(scale, scale);
         // instantiate an image to draw on
         image = new GreenfootImage(scale, scale);
 
-        this.setImage(image);
-
-        // Draw a line at the bottom of the canvas to separate from buttons
-        image.drawLine(0, scale-1, scale, scale-1);
+        clearCanvas();
 
         // draw the image
         draw();
+    }
+    
+    /**
+     * Clear the canvas
+     */
+    public void clearCanvas()
+    {
+        this.image = blankImage;
+        // Draw a line at the bottom of the canvas to separate from buttons
+        image.drawLine(0, scale-1, scale, scale-1);
     }
     
     /**
@@ -105,9 +113,9 @@ public class Canvas extends Actor
     public void rect2(double x, double y, double width, double height)
     {
         int nx = (int) (x * scale);
-        int ny = (int) ((1-y) * scale);
+        int ny = (int) ((1-y) * scale - height * scale);
         int w = (int) (width * scale);
-        int h = (int) (550 - (height * scale));
+        int h = (int) (height * scale);
         image.drawRect(nx, ny, w, h);
         this.setImage(image);
         Greenfoot.delay(delay);
