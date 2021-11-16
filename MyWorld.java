@@ -27,6 +27,15 @@ public class MyWorld extends World
     private int hoverTextFontSize = 20;
     private Label hoverTextLabel;
 
+    // true if sorting algorithm should be visualized
+    private boolean visualized;
+    
+    // the number of elements in the array
+    private int numberOfElements = 10;
+    
+    // the array to display
+    private int[] elements = new int[numberOfElements];
+    
     /**
      * Constructor for objects of class MyWorld.
      */
@@ -45,6 +54,10 @@ public class MyWorld extends World
         hoverTextLabel = new Label("", hoverTextFontSize);
     }
 
+    /**
+     * 
+     */
+    
     /**
      * Create and update the labels
      * This method moves labels to the "front" so they can be clicked
@@ -97,7 +110,7 @@ public class MyWorld extends World
     {
         // clear the canvas
         removeObject(currentCanvas);  
-
+        
         /*
          * Try to create a new instance of the class with the same name
          * as the given letter
@@ -113,5 +126,6 @@ public class MyWorld extends World
         int x = getWidth()/2;
         int y = (getHeight() - heightOffset)/2;
         addObject(currentCanvas, x, y);
+        currentCanvas.draw();
     }
 }

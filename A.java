@@ -1,17 +1,71 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Linear Search Canvas
  */
 public class A extends Canvas
 {
+    SimpleTimer timer = new SimpleTimer();
+    ArrayList<Integer> list = new ArrayList<Integer>();
+    int numElements = 350;
+    
     /**
      * TODO: Replace this code with your own code.
-     * Practice drawing different lines and shapes.
-     * Refer to the drawing API in the superclass
+     * 
      */
     public void draw()
     {
-        line(0,0,1,1);
+        setup();
+        //drawArray();
+        bubbleSort();
+    }
+    
+    public void drawArray()
+    {
+        double bin = 1.0/list.size();
+
+        for(int i = 0; i < list.size(); i++)
+        {
+            double height = (double)list.get(i) / list.size();
+            double x = i * bin;
+            double y = 0;
+            rect2(x, y, bin, height);
+        }
+        update();
+    
+    }
+    
+    public double sortTime()
+    {
+        return 0.0;
+    }
+    
+    
+    private void setup()
+    {
+        for(int i = 1; i <= numElements; i++)
+        {
+            list.add(i);
+        }
+        Collections.shuffle(list);
+    }
+    
+    public void bubbleSort()
+    {
+        timer.mark();
+        for(int i = 0; i < numElements; i++)
+        {
+            for(int j = 1; j < numElements; j++)
+            {
+                if(list.get(j) < list.get(j-1))
+                {
+                    Collections.swap(list, j, j-1);
+                    drawArray();
+                }
+            }
+        }
+        int elapsed = timer.millisElapsed();
     }
 }
