@@ -10,10 +10,11 @@ public class Canvas extends Actor
 {
 
     private int delay = 0; // The drawing delay
-    GreenfootImage blankImage = new GreenfootImage(1,1);
-    GreenfootImage image = new GreenfootImage(1,1);
+    GreenfootImage image0 = new GreenfootImage(1,1);
+    GreenfootImage image1 = new GreenfootImage(1,1);
     private int scale; // The side-length of the world.
-    
+
+    private GreenfootImage currentImage;
     /**
      * Override and implement your drawing in this method.
      * 
@@ -30,33 +31,37 @@ public class Canvas extends Actor
     public void draw()
     {
     }
- 
+
+    public void update()
+    {     
+        setImage(currentImage);
+  
+        if(currentImage == image0)
+        {
+            image1.clear();
+            currentImage = image1;
+        }
+        else if (currentImage == image1)
+        {
+            image0.clear();
+            currentImage = image0;
+        }
+        
+    }
+
     public void addedToWorld(World world)
     {
         // set the scale to the width of the world
         // ensure width = height in the world
         scale = world.getWidth();
-        
-        blankImage = new GreenfootImage(scale, scale);
+
         // instantiate an image to draw on
-        image = new GreenfootImage(scale, scale);
+        image0 = new GreenfootImage(scale, scale);
+        image1 = new GreenfootImage(scale, scale);
+        currentImage = image0;
 
-        clearCanvas();
+    }
 
-        // draw the image
-        draw();
-    }
-    
-    /**
-     * Clear the canvas
-     */
-    public void clearCanvas()
-    {
-        this.image = blankImage;
-        // Draw a line at the bottom of the canvas to separate from buttons
-        image.drawLine(0, scale-1, scale, scale-1);
-    }
-    
     /**
      * Draw a line between coordinates (x1, y1) and (x2, y2)
      */
@@ -66,8 +71,8 @@ public class Canvas extends Actor
         int nx2 = (int) (x2 * scale);
         int ny1 = (int) ((1 - y1) * scale);
         int ny2 = (int) ((1 - y2) * scale);
-        image.drawLine(nx1, ny1, nx2, ny2);
-        this.setImage(image);
+        currentImage.drawLine(nx1, ny1, nx2, ny2);
+        //this.setImage(currentImage);
         Greenfoot.delay(delay);
     }
 
@@ -88,8 +93,8 @@ public class Canvas extends Actor
         int ny = (int) ((1 - y) * scale - yRadius * scale);
         int width = (int) (xRadius * 2 * scale);
         int height = (int) (yRadius * 2 * scale);
-        image.drawOval(nx, ny, width, height);
-        this.setImage(image);
+        currentImage.drawOval(nx, ny, width, height);
+        //this.setImage(currentImage);
         Greenfoot.delay(delay);
     }
 
@@ -102,11 +107,11 @@ public class Canvas extends Actor
         int ny = (int) ((1 - y) * scale - halfHeight * scale);
         int width = (int) (halfWidth * 2 * scale);
         int height = (int) (halfHeight * 2 * scale);
-        image.drawRect(nx, ny, width, height);
-        this.setImage(image);
+        currentImage.drawRect(nx, ny, width, height);
+        //this.setImage(currentImage);
         Greenfoot.delay(delay);
     }
-    
+
     /**
      * Draw a rectangle with bottom left coordinate (x, y) with width and height
      */
@@ -116,18 +121,17 @@ public class Canvas extends Actor
         int ny = (int) ((1-y) * scale - height * scale);
         int w = (int) (width * scale);
         int h = (int) (height * scale);
-        image.drawRect(nx, ny, w, h);
-        this.setImage(image);
+        currentImage.drawRect(nx, ny, w, h);
+        //this.setImage(currentImage);
         Greenfoot.delay(delay);
     }
-
 
     /**
      * Set the drawing color
      */
     public void setColor(Color color)
     {
-        image.setColor(color);
+        currentImage.setColor(color);
     }
 
 }

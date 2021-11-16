@@ -55,6 +55,7 @@ public class Button extends Actor
                 // Update the screen
                 MyWorld world = (MyWorld) getWorld();
                 world.updateCanvas(this.buttonText);
+                
             }
             else
             {

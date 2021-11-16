@@ -110,7 +110,7 @@ public class MyWorld extends World
     {
         // clear the canvas
         removeObject(currentCanvas);  
-
+        
         /*
          * Try to create a new instance of the class with the same name
          * as the given letter
@@ -126,5 +126,6 @@ public class MyWorld extends World
         int x = getWidth()/2;
         int y = (getHeight() - heightOffset)/2;
         addObject(currentCanvas, x, y);
+        currentCanvas.draw();
     }
 }

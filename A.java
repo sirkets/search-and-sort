@@ -9,7 +9,7 @@ public class A extends Canvas
 {
     SimpleTimer timer = new SimpleTimer();
     ArrayList<Integer> list = new ArrayList<Integer>();
-    int numElements = 100;
+    int numElements = 350;
     
     /**
      * TODO: Replace this code with your own code.
@@ -18,15 +18,12 @@ public class A extends Canvas
     public void draw()
     {
         setup();
-
         //drawArray();
-        
         bubbleSort();
     }
     
     public void drawArray()
     {
-        //clearCanvas();
         double bin = 1.0/list.size();
 
         for(int i = 0; i < list.size(); i++)
@@ -36,6 +33,7 @@ public class A extends Canvas
             double y = 0;
             rect2(x, y, bin, height);
         }
+        update();
     
     }
     
@@ -68,6 +66,6 @@ public class A extends Canvas
                 }
             }
         }
-        System.out.println(timer.millisElapsed());
+        int elapsed = timer.millisElapsed();
     }
 }
