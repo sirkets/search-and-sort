@@ -44,12 +44,20 @@ public class Canvas extends Actor
 
     /**
      * To be called at the point in your code where you want your
-     * drawing to be displayed on the Canvas
+     * drawing to be displayed on the Canvas.
+     * 
+     * The main goal of this method is to eliminate screen flicker.
+     * All the drawing will be done on the offscreen image, then that
+     * image is shown one time with 'setImage'.  All the screen clearing
+     * will happen 'offscreen'.
      */
     public void update()
-    {     
+    {
+        // Set the canvas image to the current image that has been drawn on
         setImage(currentImage);
   
+        // Prepare the canvas so that any drawing will go on a different
+        // Greenfoot image.
         if(currentImage == image0)
         {
             image1.clear();
