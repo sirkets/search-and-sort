@@ -8,7 +8,7 @@ public class C extends Canvas
     /**
      * TODO:  
      */
-    public void draw()
+    public void run()
     {
         
     }

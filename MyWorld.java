@@ -1,10 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * The main world
- * 
- * Do NOT make any changes in this class
  */
 public class MyWorld extends World
 {
@@ -54,10 +53,6 @@ public class MyWorld extends World
         hoverTextLabel = new Label("", hoverTextFontSize);
     }
 
-    /**
-     * 
-     */
-    
     /**
      * Create and update the labels
      * This method moves labels to the "front" so they can be clicked
@@ -112,7 +107,7 @@ public class MyWorld extends World
         removeObject(currentCanvas);  
         
         /*
-         * Try to create a new instance of the class with the same name
+         * Create a new instance of the class with the same name
          * as the given letter
         */
         try{
@@ -126,6 +121,6 @@ public class MyWorld extends World
         int x = getWidth()/2;
         int y = (getHeight() - heightOffset)/2;
         addObject(currentCanvas, x, y);
-        currentCanvas.draw();
+        currentCanvas.run();
     }
 }
