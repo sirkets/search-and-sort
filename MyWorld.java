@@ -28,13 +28,13 @@ public class MyWorld extends World
 
     // true if sorting algorithm should be visualized
     private boolean visualized;
-    
+
     // the number of elements in the array
     private int numberOfElements = 10;
-    
+
     // the array to display
     private int[] elements = new int[numberOfElements];
-    
+
     /**
      * Constructor for objects of class MyWorld.
      */
@@ -55,7 +55,6 @@ public class MyWorld extends World
 
     /**
      * Create and update the labels
-     * This method moves labels to the "front" so they can be clicked
      */
     private void createButtons()
     {
@@ -79,6 +78,7 @@ public class MyWorld extends World
 
     /**
      * Display the name of the exercise from the given letter
+     * @param letter A letter representing the Canvas that the mouse is hovering over
      */
     public void displayHoverText(String letter)
     {
@@ -86,7 +86,7 @@ public class MyWorld extends World
         int y = hoverTextFontSize;
         String displayText = drawingNamesMap.get(letter);
         hoverTextLabel.setValue(displayText);        
-        hoverTextLabel.setFillColor(Color.GRAY);
+        hoverTextLabel.setFillColor(Color.BLACK);
         addObject(hoverTextLabel, x, y);
     }
 
@@ -99,17 +99,32 @@ public class MyWorld extends World
     }
 
     /**
+     * Display text in the middle of the canvas
+     * @param text The text to show
+     */
+    public void display(String text)
+    {
+        int size = getWidth() / 12;
+        int x = getWidth()/2;
+        int y = getHeight()/2;
+        Label label = new Label(text, size);
+        label.setFillColor(Color.YELLOW);
+        addObject(label, x, y);
+    }
+
+    /**
      *  Show the correct canvas based on its letter 
+     *  @param letter A letter representing the Canvas subclass to display
      */
     public void updateCanvas(String letter)
     {
         // clear the canvas
         removeObject(currentCanvas);  
-        
+
         /*
          * Create a new instance of the class with the same name
          * as the given letter
-        */
+         */
         try{
             Class<?> cls = Class.forName(letter);
             currentCanvas = (Canvas) cls.getConstructor().newInstance();

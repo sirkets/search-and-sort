@@ -23,7 +23,7 @@ public class A extends Canvas
     {
         // Instantiate the main array
         nums = new int[N];
-        
+
         // Setup the array 
         setup(nums);
 
@@ -36,8 +36,19 @@ public class A extends Canvas
      */
     public void run()
     {
-        //drawArray(nums,100);
-        bubbleSort(nums);
+        // Set the timer to 0
+        timer.mark();
+        
+        // Run the sort algorithm on an array
+        bubbleSort(nums);  
+        
+        // How much time has elapsed?
+        double time = (double)timer.millisElapsed()/1000;
+        
+        // Display that time on the canvas
+        MyWorld world = (MyWorld) getWorld();
+        String result = "Time: " + Double.toString(time) + " seconds";
+        world.display(result);
     }
 
     /**
@@ -60,6 +71,20 @@ public class A extends Canvas
     }
 
     /**
+     * TODO: Implement this method
+     * Swap elements at index positions i and j in the given array.  
+     * @param arr An integer array
+     * @param a The index of one of the elements to swap
+     * @param b The index of the other element to swap with
+     */
+    private void swap(int[] arr, int i, int j)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    /**
      * Shuffle an array using the Fisher-Yates method.
      * The Fisher-Yates method iterates the array once, swapping each
      * element with a random element chosen in the range between
@@ -76,20 +101,6 @@ public class A extends Canvas
             int r = Greenfoot.getRandomNumber(n - i) + i;
             swap(arr, i, r);
         }
-    }
-
-    /**
-     * TODO: Implement this method
-     * Swap elements at index positions i and j in the given array.  
-     * @param arr An integer array
-     * @param a The index of one of the elements to swap
-     * @param b The index of the other element to swap with
-     */
-    private void swap(int[] arr, int i, int j)
-    {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
     }
 
     /**
@@ -114,7 +125,7 @@ public class A extends Canvas
     /**
      * Draw the given array, highlighting the element at position k
      * @param arr An integer array
-     * @param k The position in the array to draw in a differen color. k < arr.length
+     * @param k The position in the array to draw in a different color. k < arr.length
      */
     public void drawArray(int[] arr, int k)
     {
@@ -130,7 +141,7 @@ public class A extends Canvas
             double height = (double)arr[i]/N;
             double x = i * bin;
             double y = 0;
-            
+
             // Change the color for the one index
             if(i == k)
             {
@@ -147,11 +158,6 @@ public class A extends Canvas
         }
         // Show the canvas
         update();
-    }
-
-    public double displaySortTime()
-    {
-        return 0.0;
     }
 
     /**
@@ -173,6 +179,5 @@ public class A extends Canvas
                 }
             }
         }
-        int elapsed = timer.millisElapsed();
     }
 }
