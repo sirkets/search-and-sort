@@ -32,8 +32,7 @@ public class A extends Canvas
     }
 
     /**
-     * This method will time how long it takes to run a visualized
-     * algorithm and display the result on the canvas.
+     * TODO: Replace this code with your own code to draw your array.
      */
     public void run()
     {
@@ -53,8 +52,13 @@ public class A extends Canvas
     }
 
     /**
-     * TODO:  Set up the array so that every element has a value that is
-     * an integer from 1 to the length of the array (1 - N).
+     * TODO: Implement any other methods that you need below.  These are
+     * sometimes called 'helper' methods
+     */
+
+    /**
+     * Set up the array so that every element has a value that is an integer
+     * from 1 to the length of the array (1 - N).
      * @param arr An array of integers
      */
     private void setup(int[] arr)
@@ -81,7 +85,7 @@ public class A extends Canvas
     }
 
     /**
-     * TODO: Shuffle an array using the Fisher-Yates method.
+     * Shuffle an array using the Fisher-Yates method.
      * The Fisher-Yates method iterates the array once, swapping each
      * element with a random element chosen in the range between
      * the current position to the length of the array.
@@ -157,8 +161,7 @@ public class A extends Canvas
     }
 
     /**
-     * A simple sorting algorithm.  It works by comparing every pair of values
-     * and swapping them so that the smaller value is at the lower index.
+     * A simple sorting algorithm
      * @param arr An integer array
      */
     public void bubbleSort(int[] arr)
