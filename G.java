@@ -7,8 +7,6 @@ public class G extends Canvas
 {
     /**
      * TODO: Implement a Quick Sort visualization
-     * 
-     * 
      */
     public void run()
     {

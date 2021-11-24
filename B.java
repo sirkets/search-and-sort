@@ -15,7 +15,7 @@ public class B extends Canvas
     // The main array to visualize
     private int[] nums;
 
-    // The target value that the search algorithm will search for
+    // The target value that we're looking for
     private int target;
 
     // A timer for keeping track of how long your algorithm takes
