@@ -1,6 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Example Canvas for practicing how to draw/visualize an array
@@ -59,11 +58,6 @@ public class A extends Canvas
      */
     private void setup(int[] arr)
     {
-        // populate the array with values
-        for(int i = 1; i <= N; i++)
-        {
-            arr[i-1] = i;
-        }
     }
 
     /**
@@ -75,9 +69,6 @@ public class A extends Canvas
      */
     private void swap(int[] arr, int i, int j)
     {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
     }
 
     /**
@@ -89,14 +80,6 @@ public class A extends Canvas
      */
     private void shuffle(int[] arr)
     {
-        int n = arr.length;
-        for(int i = 0; i < n; i++)
-        {
-            // swap the current element with a random one in the range
-            // between the current index and the length of the array
-            int r = Greenfoot.getRandomNumber(n - i) + i;
-            swap(arr, i, r);
-        }
     }
 
     /**
